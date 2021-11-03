@@ -8,8 +8,18 @@
 <%@ page import="solent.ac.uk.ood.examples.cardcheck.CardValidationResult" %>
 <%@ page import="solent.ac.uk.ood.examples.cardcheck.RegexCardValidator" %>
 
+
 <%
     String creditcardno = request.getParameter("creditcardno");
+    if (creditcardno == null) {
+        session.setAttribute("creditcardno", creditcardno);
+    }
+   
+    else {
+        session.setAttribute("creditcardno", 123);
+    }
+    
+    
 
     // TODO CREATE LOGIC TO CHECK A CARD HERE
     // TIP - LOOK AT THE CODE IN TestRegexCardValidator.java
@@ -26,10 +36,12 @@
         <h1>Check Credit Card</h1>
    
         <br>
-        <form>
+        <form action="./checkcard.jsp" method ="get">
             <input id="creditcardno">
             <input type ="submit" value="creditcardno">
         </form> <br>
+        
+        <%=creditcardno %>
         
 
         
